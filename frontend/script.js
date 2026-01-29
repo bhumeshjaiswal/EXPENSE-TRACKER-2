@@ -25,17 +25,32 @@ async function loadExpenses() {
   let total = 0;
 
   data.forEach(e => {
-    rows += `<tr>
-      <td>${e.title}</td>
-      <td>${e.amount}</td>
-      <td>${e.category}</td>
-      <td>${e.date}</td>
-    </tr>`;
+    rows += `
+      <tr>
+        <td>${e.title}</td>
+        <td>${e.amount}</td>
+        <td>${e.category}</td>
+        <td>${e.date}</td>
+        <td>
+          <button onclick="deleteExpense('${e._id}')" 
+            style="background:red;color:white;border:none;padding:5px;border-radius:4px;cursor:pointer;">
+            Delete
+          </button>
+        </td>
+      </tr>
+    `;
     total += Number(e.amount);
   });
 
   list.innerHTML = rows;
   document.getElementById("total").innerText = total;
+}
+
+async function deleteExpense(id) {
+  await fetch(API + "/delete-expense/" + id, {
+    method: "DELETE"
+  });
+  loadExpenses();
 }
 
 const title = document.getElementById("title");
