@@ -1,15 +1,15 @@
+/* Page background */
 body {
   margin: 0;
-  padding: 0;
   font-family: Arial, sans-serif;
   background: linear-gradient(to right, #74ebd5, #9face6);
 }
 
-/* Main container */
+/* Main card */
 .container {
   width: 520px;
+  background: white;
   margin: 40px auto;
-  background: #ffffff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -21,7 +21,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Form styling */
+/* Form section */
 .form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -32,22 +32,29 @@ h1 {
 .form select,
 .form button {
   padding: 10px;
-  font-size: 14px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 14px;
 }
 
+/* Add expense button */
 .form button {
   grid-column: span 2;
-  background-color: #4CAF50;
+  background: #4CAF50;
   color: white;
-  border: none;
   font-size: 16px;
+  border: none;
   cursor: pointer;
 }
 
 .form button:hover {
-  background-color: #43a047;
+  background: #43a047;
+}
+
+/* Total text */
+h2 {
+  margin-top: 15px;
+  color: #333;
 }
 
 /* Table styling */
@@ -58,32 +65,39 @@ table {
 }
 
 th {
-  background-color: #4CAF50;
+  background: #4CAF50;
   color: white;
 }
 
 th, td {
   padding: 8px;
   border: 1px solid #ddd;
+  text-align: center;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background: #f9f9f9;
 }
 
-/* Total text */
-h2 {
-  margin-top: 15px;
-  color: #333;
+/* Delete button */
+button {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.85;
 }
 
 /* Footer */
 .footer {
-  margin-top: 25px;
+  margin-top: 20px;
   padding-top: 10px;
+  border-top: 1px solid #ddd;
   font-size: 14px;
   color: #555;
-  border-top: 1px solid #ddd;
 }
 
 .footer span {
