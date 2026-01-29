@@ -7,45 +7,45 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>💰 Expense Tracker</h1>
+<div class="container">
+  <h1>💰 Expense Tracker</h1>
 
-    <div class="form">
-      <input id="title" type="text" placeholder="Expense Title">
-      <input id="amount" type="number" placeholder="Amount">
+  <div class="form">
+    <input id="title" placeholder="Expense Title">
+    <input id="amount" type="number" placeholder="Amount">
 
-      <select id="category">
-        <option>Food</option>
-        <option>Travel</option>
-        <option>Shopping</option>
-        <option>Other</option>
-      </select>
+    <select id="category">
+      <option>Food</option>
+      <option>Travel</option>
+      <option>Shopping</option>
+      <option>Other</option>
+    </select>
 
-      <input id="date" type="date">
+    <input id="date" type="date">
 
-      <button onclick="addExpense()">Add Expense</button>
-    </div>
-
-    <h2>Total: ₹<span id="total">0</span></h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody id="list"></tbody>
-    </table>
-
-    <!-- Footer -->
-    <footer class="footer">
-      Created by <span>Bhumesh Jaiswal</span>
-    </footer>
+    <button onclick="addExpense()">Add Expense</button>
   </div>
 
-  <script src="script.js"></script>
+  <h2>Total: ₹<span id="total">0</span></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="list"></tbody>
+  </table>
+
+  <footer class="footer">
+    Created by <span>Bhumesh Jaiswal</span>
+  </footer>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
