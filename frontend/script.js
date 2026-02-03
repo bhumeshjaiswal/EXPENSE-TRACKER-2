@@ -22,7 +22,7 @@ async function loadExpenses() {
   const data = await res.json();
 
   let rows = "";
-  let total = 0;
+  let totalSpent = 0;
 
   data.forEach(e => {
     rows += `
@@ -32,18 +32,27 @@ async function loadExpenses() {
         <td>${e.category}</td>
         <td>${e.date}</td>
         <td>
-          <button onclick="deleteExpense('${e._id}')" 
+          <button onclick="deleteExpense('${e._id}')"
             style="background:red;color:white;border:none;padding:5px;border-radius:4px;cursor:pointer;">
             Delete
           </button>
         </td>
       </tr>
     `;
-    total += Number(e.amount);
+    totalSpent += Number(e.amount);
   });
 
   list.innerHTML = rows;
-  document.getElementById("total").innerText = total;
+
+  // Total spent
+  document.getElementById("total").innerText = totalSpent;
+
+  // Remaining balance
+  const accountBalance =
+    Number(document.getElementById("accountBalance").value) || 0;
+
+  const remaining = accountBalance - totalSpent;
+  document.getElementById("remaining").innerText = remaining;
 }
 
 async function deleteExpense(id) {
@@ -53,6 +62,7 @@ async function deleteExpense(id) {
   loadExpenses();
 }
 
+// DOM elements
 const title = document.getElementById("title");
 const amount = document.getElementById("amount");
 const category = document.getElementById("category");
