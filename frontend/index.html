@@ -7,16 +7,33 @@
 </head>
 <body>
 
+<!-- Header -->
+<div class="header">
+  <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" alt="Expense Icon">
+  <h1>Expense Tracker</h1>
+  <p>Track your spending smartly 💡</p>
+</div>
+
+<!-- Main Card -->
 <div class="container">
-  <h1>💰 Expense Tracker</h1>
 
-  <!-- Account Balance -->
-  <div class="balance-box">
-    <input id="accountBalance" type="number" placeholder="Enter Account Balance">
+  <!-- Balance Section -->
+  <div class="balance-card">
+    <div>
+      <h3>Account Balance</h3>
+      <input id="accountBalance" type="number" placeholder="Enter balance">
+    </div>
+
+    <div>
+      <h3>Total Spent</h3>
+      <p class="spent">₹ <span id="total">0</span></p>
+    </div>
+
+    <div>
+      <h3>Remaining</h3>
+      <p class="remaining">₹ <span id="remaining">0</span></p>
+    </div>
   </div>
-
-  <h2>Total Spent: ₹<span id="total">0</span></h2>
-  <h2>Remaining Balance: ₹<span id="remaining">0</span></h2>
 
   <!-- Expense Form -->
   <div class="form">
@@ -24,15 +41,15 @@
     <input id="amount" type="number" placeholder="Amount">
 
     <select id="category">
-      <option>Food</option>
-      <option>Travel</option>
-      <option>Shopping</option>
-      <option>Other</option>
+      <option>Food 🍔</option>
+      <option>Travel 🚕</option>
+      <option>Shopping 🛒</option>
+      <option>Other 💸</option>
     </select>
 
     <input id="date" type="date">
 
-    <button onclick="addExpense()">Add Expense</button>
+    <button onclick="addExpense()">➕ Add Expense</button>
   </div>
 
   <!-- Expense Table -->
@@ -49,9 +66,11 @@
     <tbody id="list"></tbody>
   </table>
 
+  <!-- Footer -->
   <footer class="footer">
-    Created by <span>Bhumesh Jaiswal</span>
+    Created by <span>Bhumesh Jaiswal</span> 🚀
   </footer>
+
 </div>
 
 <script src="script.js"></script>
