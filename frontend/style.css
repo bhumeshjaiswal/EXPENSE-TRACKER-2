@@ -1,77 +1,111 @@
-/* Page background */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #74ebd5, #9face6);
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: #333;
 }
 
-/* Main card */
-.container {
-  width: 520px;
-  background: white;
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+/* Header */
+.header {
   text-align: center;
+  padding: 30px 10px;
+  color: white;
 }
 
-/* Heading */
-h1 {
+.header img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* Main container */
+.container {
+  width: 90%;
+  max-width: 800px;
+  background: white;
+  margin: -20px auto 40px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Balance card */
+.balance-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
   margin-bottom: 20px;
 }
 
-/* Form section */
+.balance-card div {
+  background: #f5f7ff;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.balance-card input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.spent {
+  color: #e53935;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.remaining {
+  color: #2e7d32;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Form */
 .form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 20px;
 }
 
 .form input,
 .form select,
 .form button {
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
 }
 
-/* Add expense button */
 .form button {
   grid-column: span 2;
-  background: #4CAF50;
+  background: #667eea;
   color: white;
-  font-size: 16px;
   border: none;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .form button:hover {
-  background: #43a047;
+  background: #5a67d8;
 }
 
-/* Total text */
-h2 {
-  margin-top: 15px;
-  color: #333;
-}
-
-/* Table styling */
+/* Table */
 table {
   width: 100%;
-  margin-top: 15px;
   border-collapse: collapse;
 }
 
 th {
-  background: #4CAF50;
+  background: #667eea;
   color: white;
 }
 
 th, td {
-  padding: 8px;
-  border: 1px solid #ddd;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
   text-align: center;
 }
 
@@ -80,19 +114,22 @@ tr:nth-child(even) {
 }
 
 /* Delete button */
-button {
-  padding: 6px 10px;
-  border-radius: 4px;
+.delete-btn {
+  background: #e53935;
+  color: white;
   border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-button:hover {
-  opacity: 0.85;
+.delete-btn:hover {
+  background: #c62828;
 }
 
 /* Footer */
 .footer {
+  text-align: center;
   margin-top: 20px;
   padding-top: 10px;
   border-top: 1px solid #ddd;
@@ -101,6 +138,6 @@ button:hover {
 }
 
 .footer span {
-  color: #4CAF50;
+  color: #667eea;
   font-weight: bold;
 }
