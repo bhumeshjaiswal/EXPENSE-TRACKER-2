@@ -1,5 +1,6 @@
 const API = "http://localhost:5000";
 
+// Add new expense
 async function addExpense() {
   const expense = {
     title: title.value,
@@ -8,15 +9,29 @@ async function addExpense() {
     date: date.value
   };
 
+  // Simple validation
+  if (!expense.title || !expense.amount || !expense.date) {
+    alert("Please fill all fields");
+    return;
+  }
+
   await fetch(API + "/add-expense", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(expense)
   });
+
+  // Clear inputs
+  title.value = "";
+  amount.value = "";
+  date.value = "";
 
   loadExpenses();
 }
 
+// Load all expenses
 async function loadExpenses() {
   const res = await fetch(API + "/expenses");
   const data = await res.json();
@@ -24,49 +39,58 @@ async function loadExpenses() {
   let rows = "";
   let totalSpent = 0;
 
-  data.forEach(e => {
+  data.forEach(exp => {
     rows += `
       <tr>
-        <td>${e.title}</td>
-        <td>${e.amount}</td>
-        <td>${e.category}</td>
-        <td>${e.date}</td>
+        <td>${exp.title}</td>
+        <td>₹${exp.amount}</td>
+        <td>${exp.category}</td>
+        <td>${exp.date}</td>
         <td>
-          <button onclick="deleteExpense('${e._id}')"
-            style="background:red;color:white;border:none;padding:5px;border-radius:4px;cursor:pointer;">
+          <button class="delete-btn" onclick="deleteExpense('${exp._id}')">
             Delete
           </button>
         </td>
       </tr>
     `;
-    totalSpent += Number(e.amount);
+
+    totalSpent += Number(exp.amount);
   });
 
   list.innerHTML = rows;
 
-  // Total spent
+  // Update total spent
   document.getElementById("total").innerText = totalSpent;
 
-  // Remaining balance
+  // Calculate remaining balance
   const accountBalance =
     Number(document.getElementById("accountBalance").value) || 0;
 
-  const remaining = accountBalance - totalSpent;
-  document.getElementById("remaining").innerText = remaining;
+  const remainingBalance = accountBalance - totalSpent;
+  document.getElementById("remaining").innerText = remainingBalance;
 }
 
+// Delete expense
 async function deleteExpense(id) {
   await fetch(API + "/delete-expense/" + id, {
     method: "DELETE"
   });
+
   loadExpenses();
 }
 
-// DOM elements
+// DOM Elements
 const title = document.getElementById("title");
 const amount = document.getElementById("amount");
 const category = document.getElementById("category");
 const date = document.getElementById("date");
 const list = document.getElementById("list");
+const accountBalanceInput = document.getElementById("accountBalance");
 
+// Recalculate remaining balance when balance changes
+accountBalanceInput.addEventListener("input", () => {
+  loadExpenses();
+});
+
+// Initial load
 loadExpenses();
